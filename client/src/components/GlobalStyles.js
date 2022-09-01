@@ -15,13 +15,22 @@ body {
     background-color:white;
 }
 
-@media only screen and (min-width: 800px) {
-.desktop-nav {
-    display: block;
-}
+@media only screen and (min-width: 800px){
+    .desktop-nav {
+        display: block;
+    }
 
-.mobile-nav {
-    display: none;
+    .mobile-nav {
+        display: none;
+    }
 }
+@media only screen and(min-width: 801px){
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
 }
 `;

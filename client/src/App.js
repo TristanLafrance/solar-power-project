@@ -1,14 +1,49 @@
 import{ BrowserRouter, Routes, Route, NavLink}from "react-router-dom";
 import HomePage from "./components/HomePage"; 
 import About from "./components/About";
-import Information from "./components/Inofrmation";
+import Information from "./components/Information";
 import Map from "./components/Map"
 import OurGoals from "./components/OurGoals"
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import { GiHamburgerMenu } from "react-icons/gi"
+import { useEffect, useState } from "react";
+import SolarPanelCalc from "./components/SolarPanelCalc";
+import PriceCalc from "./components/PriceCalc";
+
 
 const App = () => {
+    const [ usersInfo, setUsersInfo ] = useState(null);
+
+    useEffect(() => {
+        fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=d65bda1b27e444d4b36764fafbc5587b`)
+        .then(res => res.json())
+        .then(data => setUsersInfo(data))
+    }, [])
+    console.log(usersInfo) 
+    
+        useEffect(() => {
+            if(usersInfo !== null){
+                fetch("/api/post-user", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(usersInfo),
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.message === "success" ){
+                            window.sessionStorage.setItem("id", data.data)
+                            console.log("sucess")
+                        } else {
+                            window.sessionStorage.setItem("id", null)
+                        }
+                    })
+            } else if(usersInfo === null){
+                console.log("not ready") 
+            }
+        }, [usersInfo])
     return (
         <BrowserRouter>
             <GlobalStyles />
@@ -33,19 +68,21 @@ const App = () => {
                                 </StyledLi>
                             </StyledUl>
                         </StyledNavDesk>
-                        <nav className="mobile-nav">
-                        <StyledButton className="mobile-nav-button" aria-label="Show menu">
-                            <GiHamburgerMenu />
-                        </StyledButton>
-                    </nav>
-                </StyledHeader>
-            </div>
+                        <StyledNavMobile className="mobile-nav">
+                            <StyledButton className="mobile-nav-button" aria-label="Show menu">
+                                <GiHamburgerMenu />
+                            </StyledButton>
+                        </StyledNavMobile>
+                    </StyledHeader>
+                </div>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/Map" element={<Map />} />
                     <Route path="/About-us" element={<About />} />
                     <Route path="/Our-goals" element={<OurGoals />} />
                     <Route path="/Information" element={<Information />} />
+                    <Route path='/Solar-pannel-calculation' element={<SolarPanelCalc />} />
+                    <Route path='/Price-calculation' element={<PriceCalc />} />
                 </Routes>
             </ParentDiv>
         </BrowserRouter>
@@ -55,7 +92,7 @@ const App = () => {
 // Styled Components //
 
 const ParentDiv = styled.div`
-
+    
 `   
 
 const StyledHeader = styled.header`
@@ -63,14 +100,17 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
+    position:fixed;
+    left:0;
+    top:0;
 `
 
 const StyledH1 = styled.h1`
     color: black;
+    min-width: fit-content;
 `
 
 const StyledNavDesk = styled.nav`
-    display: none;
 `
 
 const StyledUl = styled.ul`
@@ -78,17 +118,28 @@ const StyledUl = styled.ul`
     gap: 75px;
     font-weight: bold;
     font-size: 18px;
+    margin-left: 75%;
 `
 
 const StyledLi = styled.li`
     list-style: none;
+    min-width: fit-content;
+`
+
+const StyledNavMobile = styled.nav`
 `
 
 const StyledNavLink = styled(NavLink)`
     text-decoration: none;
+    color: rgba(0, 0, 0, 0.644);
+    transition: color 2s;
+    &:hover, &:active, &:focus {
+    color: black;
+}
 `
 
 const StyledButton = styled.button`
     width: 18px;
 `
+
 export default App;
