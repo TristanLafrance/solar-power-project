@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+
 export default createGlobalStyle`
     :root {
         --color-white: white;
@@ -13,24 +14,5 @@ body {
     padding: 0;
     margin: 0;
     background-color:white;
-}
-
-@media only screen and (min-width: 800px){
-    .desktop-nav {
-        display: block;
-    }
-
-    .mobile-nav {
-        display: none;
-    }
-}
-@media only screen and(min-width: 801px){
-    .desktop-nav {
-        display: none;
-    }
-
-    .mobile-nav {
-        display: block;
-    }
-}
-`;
+    font-family: 'Titillium Web', sans-serif;
+}`

@@ -6,11 +6,10 @@ import Map from "./components/Map"
 import OurGoals from "./components/OurGoals"
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
-import { GiHamburgerMenu } from "react-icons/gi"
 import { useEffect, useState } from "react";
 import SolarPanelCalc from "./components/SolarPanelCalc";
 import PriceCalc from "./components/PriceCalc";
-
+import Result from "./components/Result";
 
 const App = () => {
     const [ usersInfo, setUsersInfo ] = useState(null);
@@ -68,11 +67,6 @@ const App = () => {
                                 </StyledLi>
                             </StyledUl>
                         </StyledNavDesk>
-                        <StyledNavMobile className="mobile-nav">
-                            <StyledButton className="mobile-nav-button" aria-label="Show menu">
-                                <GiHamburgerMenu />
-                            </StyledButton>
-                        </StyledNavMobile>
                     </StyledHeader>
                 </div>
                 <Routes>
@@ -83,6 +77,7 @@ const App = () => {
                     <Route path="/Information" element={<Information />} />
                     <Route path='/Solar-pannel-calculation' element={<SolarPanelCalc />} />
                     <Route path='/Price-calculation' element={<PriceCalc />} />
+                    <Route path="/Result" element={<Result />} />
                 </Routes>
             </ParentDiv>
         </BrowserRouter>
@@ -126,8 +121,6 @@ const StyledLi = styled.li`
     min-width: fit-content;
 `
 
-const StyledNavMobile = styled.nav`
-`
 
 const StyledNavLink = styled(NavLink)`
     text-decoration: none;
@@ -138,8 +131,5 @@ const StyledNavLink = styled(NavLink)`
 }
 `
 
-const StyledButton = styled.button`
-    width: 18px;
-`
 
 export default App;

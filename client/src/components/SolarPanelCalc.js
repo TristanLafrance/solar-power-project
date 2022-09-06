@@ -15,8 +15,7 @@ const thirdFetch =  (data) => {
         kWPerSquareMeter: data.annual,
         perKiloWattsHour: formData.perKiloWattsHour,
         numbSolarPanel: formData.numbSolarPanel,
-        eachPannelPower: formData.eachPannelPower,
-
+        eachPannelPower: formData.eachPannelPower
     }
     fetch(`/api/post-calc-info/${id}`, {
         method: 'POST',
@@ -29,10 +28,10 @@ const thirdFetch =  (data) => {
     .then(data => {
         if(data.message === "success"){
             // if auth0 already logged in then just send him to result page 
+            window.sessionStorage.setItem("collection", "yourPannel");
             history("/Information", {replace: true})
         } else {
             window.alert("Something went wrong ! Please try again")
-            history("/", {replace: true})
         }
     })
 };
@@ -65,16 +64,6 @@ const handleSubmit = async (e) => {
     if(response2.data !== null){
         await secondFetch(response2);
     }
-    
-    // fetch(`/api/get-co/${id}`)
-    // .then(res => res.json())
-    // .then(data => {
-    //     setUsersCo(data.data)
-    //     if(usersCo !== null && usersCo !== data ){
-    //         console.log(usersCo)
-    //         secondFetch();
-    //     }
-    // })
 }
 
 // handleChange to pass up the information

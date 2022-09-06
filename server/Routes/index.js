@@ -4,20 +4,24 @@ const router = require("express").Router();
 
 // importing handlers from controllers.js
 const {
-    test,
     newUser,
     getCo,
     newInfo,
-    calcInfo
+    calcInfo,
+    payback,
+    getResultPayback,
+    getYourPannel
 } = require("../handlers/handlers");
 
 // Endpoints
 
-router.get("/test", test);
+router.get("/get-co/:id", getCo);
+router.get("/get-result-payback/:id", getResultPayback);
+router.get("/get-your-pannel/:id", getYourPannel);
 router.post("/post-user", newUser);
-router.get("/get-co/:id", getCo)
-router.post("/post-calc-info/:id", calcInfo)
-router.post("/post-info", newInfo)
+router.post("/post-calc-info/:id", calcInfo);
+router.post("/post-info/:id", newInfo);
+router.post("/post-time-to-payback/:id", payback);
 
 
 router.get("*", ( req , res ) => {
