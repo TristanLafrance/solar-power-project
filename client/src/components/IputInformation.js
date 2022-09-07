@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
 
-const InputInformation = ({type, placeholder, name, required, handleChange}) => {
+const InputInformation = ({type, placeholder, name, required}) => {
         
         return (
             <StyledInputInformation
+                name={name}
                 type={type} 
                 placeholder={placeholder} 
                 required={required} 
-                onChange={(e) => handleChange(name, e.target.value)}
             />
         )
     };

@@ -1,15 +1,14 @@
 import{ BrowserRouter, Routes, Route, NavLink}from "react-router-dom";
 import HomePage from "./components/HomePage"; 
-import About from "./components/About";
 import Information from "./components/Information";
 import Map from "./components/Map"
-import OurGoals from "./components/OurGoals"
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import { useEffect, useState } from "react";
 import SolarPanelCalc from "./components/SolarPanelCalc";
 import PriceCalc from "./components/PriceCalc";
 import Result from "./components/Result";
+import ContactUs from "./components/ContactUs";
 
 const App = () => {
     const [ usersInfo, setUsersInfo ] = useState(null);
@@ -60,10 +59,7 @@ const App = () => {
                                     <StyledNavLink to="/Map"> Map </StyledNavLink>
                                 </StyledLi>
                                 <StyledLi>
-                                    <StyledNavLink to="/About-us"> About us </StyledNavLink>
-                                </StyledLi>
-                                <StyledLi>
-                                    <StyledNavLink to="/Our-goals"> Our Goals </StyledNavLink>
+                                    <StyledNavLink to="/Contact-us"> Contact us </StyledNavLink>
                                 </StyledLi>
                             </StyledUl>
                         </StyledNavDesk>
@@ -72,8 +68,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/Map" element={<Map />} />
-                    <Route path="/About-us" element={<About />} />
-                    <Route path="/Our-goals" element={<OurGoals />} />
+                    <Route path="/Contact-us" element={<ContactUs />} />
                     <Route path="/Information" element={<Information />} />
                     <Route path='/Solar-pannel-calculation' element={<SolarPanelCalc />} />
                     <Route path='/Price-calculation' element={<PriceCalc />} />
@@ -118,7 +113,7 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
     list-style: none;
-    min-width: fit-content;
+    min-width: 200px;
 `
 
 

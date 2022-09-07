@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ChartDataPayback from "./ChartDataPayback";
-
-
+import ChartDataPannel from "./ChartDataPannel";
 
 const Result = () => {
     const [ resultData, setResultData ] = useState(null);
@@ -21,37 +20,47 @@ const Result = () => {
             .then(res => res.json())
             .then(data => {
                 setResultData(data)
-                console.log(data)
             })
         }
         }, [])
 
+
     if(collection === "payback" && resultData !== null){
         return (
-            <StyledContainer>
-                <ChartDataPayback dataToPush={resultData} />
-            </StyledContainer>
+            <StyledParent>
+                <StyledHeader>Here is your result:</StyledHeader>
+                <StyledChartContainer>
+                    <ChartDataPayback dataToPush={resultData} />
+                </StyledChartContainer>
+                <StyledContainer>
+                    <StyledInfo>
+                        As you can see, it will take around {resultData.data.timePaybackYear} years and about {resultData.data.timePaybackDay} days  to pay back your inital investment.
+                    </StyledInfo>
+                    <StyledInfo>
+                        Your system will output around {resultData.data.systemOutputPerDay} kWH per day and about {resultData.data.systemOutputPerYear} kWh per year.
+                    </StyledInfo>
+                    <StyledInfo>
+                        Finally your system will output around ${resultData.data.moneyPerDay} per day and about ${resultData.data.moneyPerYear} per year. 
+                    </StyledInfo>
+                </StyledContainer>
+            </StyledParent>
         )
     } else if(collection === "yourPannel" && resultData !== null){
-        // systemOutputPerDay: systemOutputPerDay,
-        // systemOutputPerYear: systemOutputPerYear,
-        // moneyPerDay: moneyPerDay,
-        // moneyPerYear: moneyPerYear
         return (
-            <StyledContainer>
-                <div>
-                    Your system will be able to output an average of {resultData.data.systemOutputPerDay} KwH/day
-                </div>
-                <div>
-                    And {resultData.data.systemOutputPerYear} KwH/year
-                </div>
-                <div>
-                    {resultData.data.moneyPerDay}
-                </div>
-                <div>
-                    {resultData.data.moneyPerYear}
-                </div>
-            </StyledContainer>
+            <StyledParent>
+                <StyledHeader>Here is your result:</StyledHeader>
+                <StyledChartContainer>
+                    <ChartDataPannel dataToPush={resultData} />
+                </StyledChartContainer>
+                <StyledContainer>
+                    <StyledInfo>
+                        Your system will output around {resultData.data.systemOutputPerDay} kWH per day and about {resultData.data.systemOutputPerYear} kWh per year.
+                    </StyledInfo>
+                    <StyledInfo>
+                        Finally your system will output around ${resultData.data.moneyPerDay} per day and about ${resultData.data.moneyPerYear} per year. 
+                    </StyledInfo>
+                </StyledContainer>
+            </StyledParent>
         )
     } else {
         return (
@@ -64,7 +73,26 @@ const Result = () => {
 
 export default Result;
 
-const StyledContainer = styled.div`
+const StyledParent = styled.div`
     margin-top:  60px;
     margin-left: auto;
+`
+
+
+const StyledContainer = styled.div`
+    margin: 50px 0px 0px 30%;
+    font-weight: bold;
+    font-size: 20px;
+`
+
+const StyledInfo = styled.div`
+    margin-bottom: 15px;
+`
+
+const StyledHeader = styled.h1`
+    margin: 80px 0px 30px 40%;
+
+`
+
+const StyledChartContainer = styled.div`
 `

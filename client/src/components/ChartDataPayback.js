@@ -9,25 +9,28 @@ const ChartDataPayback = ({ dataToPush }) => {
     const moneyPerYear = dataToPush.data.moneyPerYear
     const cost = dataToPush.data.cost
     const data = [];
-    
+    let result = cost;
 
     for(let num = 0; num <= yearToPayback; num++){
-        let result = cost;
-        // just need to make the result - moneyPerYear everyLoop
-        console.log(num, result)
         data.push({
             year: num,
-            value: result
+            amount: result
         })
+        result = result - moneyPerYear
     }
         
     return (
             <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={data} >
-                    <XAxis dataKey="year" />
-                    <YAxis dataKey="value" />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="year" 
+                    tickFormatter={number => ` Year ${number}`}
+                    />
+                    <YAxis dataKey="amount" 
+                    tickFormatter={number => `$${number}`}
+                    />
                     <Tooltip />
-                    <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
+                    <Area type="monotone" dataKey="amount" stroke="#8884d8" fill="#8884d8" />
                 </AreaChart>
             </ResponsiveContainer>
     )

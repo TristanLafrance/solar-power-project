@@ -2,6 +2,8 @@ import {  useState } from "react";
 import styled from "styled-components";
 import {default as Input} from "./InputCalc";
 import { useNavigate } from "react-router-dom";
+import designBG from "../assets/sungrow-emea-itv-MC5S6cU-unsplash.jpg"
+
 
 const SolarPanelCalc = () => {
 const history = useNavigate();
@@ -76,9 +78,12 @@ const handleChange = (key, value) => {
 return (
     <div>
         <div>
+            <div>
+                <StyledImgDesign src={designBG} alt="Some design background"/>
+            </div>
         <Form>
             <StyledForm onSubmit={(e) => handleSubmit(e, formData)}>
-            <label>Enter Your Details:</label>
+            <StyledLabel>Enter Your Details:</StyledLabel>
             <Input className="input"
                 type="number" 
                 placeholder="Amount Paid in $/kWh"
@@ -113,44 +118,54 @@ return (
 export default SolarPanelCalc;
 
 
+const StyledImgDesign = styled.img`
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+`
 
 const Form = styled.div`
-display: flex;
-gap: 50px;
-padding: 20px;
+    display: flex;
+    gap: 50px;
+    padding: 20px;
+`
+
+const StyledLabel = styled.label`
+    font-weight: bold;
+    margin-bottom: 30px;
 `
 
 const Submit = styled.button`
-background-color: #d1560e;
-border: none;
-margin-top: 5px;
-border-radius: 5px;
-padding: 10px;
-
-&:hover {
-    cursor: pointer;
-}
+    background-color: rgba(7, 63, 250, 0.767);
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding: 10px 30px 10px 30px;
+    
+    &:hover {
+        cursor: pointer;
+        background-color:rgba(7, 63, 250, 0.967);
+    }
 `;
 
 const StyledForm = styled.form`
--webkit-box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
--moz-box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
-box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
-border: 3px solid black;
-padding: 30px;
-display: flex;
-height: 400px;
-width: 500px;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 10px;
+    margin: 150px 0px 0px 35%;
+    border: 2px solid black;
+    display: flex;
+    height: 600px;
+    width: 500px;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+    
+    .input{
+    width: 200px;
 
 
-.input{
-width: 200px;
-
-
-} 
+    } 
 `;
 

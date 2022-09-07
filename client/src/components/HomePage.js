@@ -126,7 +126,7 @@ const StyledLi = styled.li`
 `
 
 const StyledButtonOne = styled.button`
-    margin: 80% 0px 0px 25%;
+    margin: 75% 0px 0px 25%;
     width: 200px;
     height: 50px;
     border-radius: 15px;
@@ -164,7 +164,7 @@ const StyledImgSavings = styled.img`
 `
 
 const StyledButtonTwo = styled.button`
-    margin: 75% 0px 0px 25%;
+    margin: 78% 0px 0px 25%;
     width: 200px;
     height: 50px;
     border-radius: 15px;

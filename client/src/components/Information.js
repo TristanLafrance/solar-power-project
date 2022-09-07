@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {default as Input} from "./InputCalc";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import emailjs from '@emailjs/browser';
+import bgDesign from "../assets/yue-chan-j8bxJBbLjIo-unsplash.jpg"
 
 const Information = () => {
     const [ formData, setFormData ] = useState({});
@@ -10,7 +12,21 @@ const Information = () => {
     const id = sessionStorage.getItem("id");
     const history = useNavigate();
 
-    const phoneVerification = async () => {
+    // const sendEmail = (e) => {
+    //     e.preventDefault();
+        
+    //     emailjs.sendForm('service_5637uvo', 'template_tmee8yt', e.target , '3IBWffzWtgvzsxgCu')
+    //         .then((result) => {
+    //             console.log(result.text);
+    //             if(result.text === "OK"){
+    //                 history("/Result", {replace: true})
+    //             }
+    //         }, (error) => {
+    //             console.log(error.text);
+    //         });
+    // };
+
+    const phoneVerification = async (e) => {
         console.log("Phone verification has been trigger")
         const res = await fetch(`https://phonevalidation.abstractapi.com/v1/?api_key=f77522d8a2f8491683d7453cfcd4ea4a&phone=${formData.phoneNumber}`)
         const res2 = await res.json();
@@ -18,31 +34,30 @@ const Information = () => {
         if(res2 !== null){
             if(res2.valid === true){
                 history("/Result", {replace: true})
+                // sendEmail(e)
             }else {
                 window.alert("We couldn't verify your phone number, please try again !")
             }
         }
     };
 
-    const emailVerification = async () => {
+    const emailVerification = async (e) => {
         console.log("emailfunction has been trigerred")
         const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
         const res2 = await res.json();
         if(res2 !== null){
             if(res2.deliverability === "DELIVERABLE"){
                 setTimeout(() => {
-                    phoneVerification();
+                    phoneVerification(e);
                 }, 2000);
             } else {
                 window.alert("We couldn't verify your email, please try again!")
             }
         }
     };
-    
 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
-        
 
         const newFormData = {
             firstName: formData.firstName ,
@@ -51,7 +66,7 @@ const Information = () => {
             phoneNumber: formData.phoneNumber,
             termsOfServices: agree
         }
-
+        console.log(newFormData)
         const response = await fetch(`/api/post-info/${id}`, {
             method: 'POST',
             headers: {
@@ -62,7 +77,7 @@ const Information = () => {
         const response2 = await response.json();
         if(response2.data !== null){
             console.log("await emailVerification trigerred")
-            await emailVerification();
+            await emailVerification(e);
         } else {
             // redirect to the form info
             history("/Information", {replace: true})
@@ -84,47 +99,50 @@ const Information = () => {
     return (
         <div>
             <div>
-            <Form>
-                <StyledForm onSubmit={(e) => handleSubmit(e, formData)}>
-                    <label>Enter Your Details:</label>
-                        <Input className="input"
-                            type="text" 
-                            placeholder="First Name"
-                            name={"firstName"}
-                            required={true}
-                            handleChange={handleChange} 
-                        />
-                        <Input className="input"
-                            type="text" 
-                            placeholder="Last Name"
-                            name={"lastName"}
-                            required={true}
-                            handleChange={handleChange} 
-                        />
-                        <Input className="input"
-                            type="email" 
-                            placeholder="Email"
-                            name={"email"}
-                            required={true}
-                            handleChange={handleChange} 
-                        />
-                        <Input className="input"
-                            type="text" 
-                            placeholder="Phone Number"
-                            name={"phoneNumber"}
-                            required={true}
-                            handleChange={handleChange} 
-                        />
-                <StyledCheckBox>
-                    <CheckBoxInput className="input" type="checkbox"  onChange={checkboxHandler} />
-                    <div>
-                        I agree to the <Link to={"/Terms-of-Service"}> terms of services </Link>
-                    </div>
-                </StyledCheckBox>
-                <Submit disabled={!agree} type="submit">Confirm</Submit>
-                </StyledForm>
-            </Form>
+                <StyledImgBg src={bgDesign} alt="Solar panel on a house" />
             </div>
+            <StyledContainer>
+                <Form>
+                    <StyledForm  onSubmit={(e) => handleSubmit(e, formData)}>
+                        <StyledLabel>Enter Your Details:</StyledLabel>
+                            <Input className="input"
+                                type="text" 
+                                placeholder="First Name"
+                                name={"firstName"}
+                                required={true}
+                                handleChange={handleChange} 
+                            />
+                            <Input className="input"
+                                type="text" 
+                                placeholder="Last Name"
+                                name={"lastName"}
+                                required={true}
+                                handleChange={handleChange} 
+                            />
+                            <Input className="input"
+                                type="email" 
+                                placeholder="Email"
+                                name={"email"}
+                                required={true}
+                                handleChange={handleChange} 
+                            />
+                            <Input className="input"
+                                type="text" 
+                                placeholder="Phone Number"
+                                name={"phoneNumber"}
+                                required={true}
+                                handleChange={handleChange} 
+                            />
+                    <StyledCheckBox>
+                        <CheckBoxInput className="input" type="checkbox"  onChange={checkboxHandler} />
+                        <div>
+                            I agree to the <Link to={"/Terms-of-Service"}> terms of services </Link>
+                        </div>
+                    </StyledCheckBox>
+                    <Submit value="Send" disabled={!agree} type="submit">Confirm</Submit>
+                    </StyledForm>
+                </Form>
+            </StyledContainer>
         </div>
     
     )
@@ -133,46 +151,63 @@ const Information = () => {
 
 export default Information;
 
-const Form = styled.div`
+const StyledImgBg = styled.img`
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    position: absolute;
+`
+
+const StyledContainer = styled.div`
     display: flex;
-    gap: 50px;
-    padding: 20px;
-    `
-    
-    const Submit = styled.button`
-    background-color: #d1560e;
+    justify-content: center;
+`
+
+const Form = styled.div`
+`
+
+
+const Submit = styled.button`
+    background-color: rgba(7, 63, 250, 0.767);
     border: none;
-    margin-top: 5px;
+    margin-top: 40px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 30px 10px 30px;
     
+    &:disabled{
+        background-color: grey;
+    }
+
     &:hover {
         cursor: pointer;
     }
-    `
+    `;
 
-    const StyledCheckBox = styled.div`
-        display: flex;
-    `
+const StyledLabel = styled.label`
+    font-weight: bold;
+    margin-bottom: 30px;
+`
 
-    const CheckBoxInput = styled.input`
-        margin-right: 15px;
-    `
-    
-    const StyledForm = styled.form`
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
-    box-shadow: 10px 10px 5px 0px rgba(217,213,217,1);
-    border: 3px solid black;
-    padding: 30px;
+const StyledCheckBox = styled.div`
     display: flex;
-    height: 400px;
+`
+
+const CheckBoxInput = styled.input`
+    margin-right: 15px;
+`
+    
+const StyledForm = styled.form`
+    margin-top: 25%;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    height: 600px;
     width: 500px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    
+    background-color: white;
     
     
     `;

@@ -5,6 +5,7 @@ const router = require("express").Router();
 // importing handlers from controllers.js
 const {
     newUser,
+    getUser,
     getCo,
     newInfo,
     calcInfo,
@@ -18,6 +19,7 @@ const {
 router.get("/get-co/:id", getCo);
 router.get("/get-result-payback/:id", getResultPayback);
 router.get("/get-your-pannel/:id", getYourPannel);
+router.get("/get-user/:id", getUser);
 router.post("/post-user", newUser);
 router.post("/post-calc-info/:id", calcInfo);
 router.post("/post-info/:id", newInfo);

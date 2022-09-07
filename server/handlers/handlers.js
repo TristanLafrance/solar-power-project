@@ -98,26 +98,20 @@ const newInfo = async (req, res) => {
         console.log(id)
         const formData = req.body
         
-
-        const userInfo = {
+        await db.collection("usersInfo").insertOne({ 
             id: id,
             firstName: formData.firstName ,
             lastName: formData.lastName,
             email: formData.email,
             phoneNumber: formData.phoneNumber,
             agree: formData.termsOfServices
-        }
-        console.log(userInfo)
-        await db.collection("usersInfo").insertOne({ userInfo })
+        })
 
-        
-        
         
         res.status(200).json({
             data: [],
             message: "success"
         })
-
         // ---- Client disconnected ---- // 
         client.close();
         console.log("disconnected!");
@@ -319,6 +313,37 @@ const getYourPannel = async (req, res) => {
     }
 };
 
+const getUser = async (req, res) => {
+    
+    const client = new MongoClient(MONGO_URI, options);
+
+    try{    
+         // ---- Client connected ---- //
+            client.connect();
+            console.log("Connected");
+            const db = client.db()
+
+            const id = req.params.id
+
+            const user = await db.collection("usersInfo").findOne({ id: id })
+
+            res.status(200).json({
+                data: user, 
+                message: "success"
+            })
+            // ---- Client disconnected ---- // 
+            client.close();
+            console.log("disconnected!");
+
+    }catch(e){
+        // else if err -->
+        res.status(400).json({
+            status: 400,
+            message: e.message
+        })
+    }
+};
+
 
 
 module.exports = { 
@@ -328,5 +353,6 @@ module.exports = {
     calcInfo,
     payback,
     getResultPayback,
-    getYourPannel
+    getYourPannel,
+    getUser
 }; 
