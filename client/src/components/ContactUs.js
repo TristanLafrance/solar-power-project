@@ -33,8 +33,8 @@ const ContactUs = () => {
             </StyledBGContainer>
             <div>
                 <Form>
-                    <StyledForm ref={form} onSubmit={sendEmail}>
-                        <label>Enter Your Details:</label>
+                    <StyledForm ref={form} onSubmit={(e) => sendEmail(e)}>
+                        <StyledLabel>Enter Your Details:</StyledLabel>
                             <Input className="input"
                                 type="text" 
                                 placeholder="First Name"
@@ -76,7 +76,7 @@ const StyledBGContainer = styled.div`
 
 const StyledImgWork = styled.img`
     width: 75vw;
-    z-index: -1;
+    /* z-index: -1; */
 `
 
 const StyledInfo = styled.div`
@@ -85,7 +85,7 @@ const StyledInfo = styled.div`
 `
 
 const StyledDesignImg = styled.img`
-    z-index: -1;
+    /* z-index: -1; */
     max-height: 100vh;
     position: absolute;
 `
@@ -103,27 +103,38 @@ const Form = styled.div`
 `
 
 const Submit = styled.button`
-    background-color: white;
+    background-color: rgba(7, 63, 250, 0.767);
     border: none;
-    margin-top: 5px;
+    margin-top: 40px;
     border-radius: 5px;
-    padding: 10px;
-
+    padding: 10px 30px 10px 30px;
+    
     &:hover {
-    cursor: pointer;
+        cursor: pointer;
+        background-color:rgba(7, 63, 250, 0.967);
     }
 `
 
 
 
 const StyledForm = styled.form`
+    z-index: 1;
+    position: relative;
+    border: 2px solid black;
+    margin: 10% 0px 0px 10%;
     padding: 30px;
     display: flex;
-    height: 400px;
+    height: 600px;
     width: 500px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    background-color: white;
+    border-radius: 20px;
 `;
 
+const StyledLabel = styled.label`
+    font-weight: bold;
+    margin-bottom: 30px;
+`

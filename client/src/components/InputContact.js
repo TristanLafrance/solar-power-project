@@ -15,12 +15,12 @@ const InputContact = ({name, type, placeholder, required}) => {
 export default InputContact;    
 
 const StyledInputInformation = styled.input`
-padding: 10px;
-width: 400px;
+    padding: 10px;
+    width: 200px;
 
-&:focus::-webkit-input-placeholder{
-transition: text-indent 2s 0.5s ease; 
-text-indent: -100%;
-opacity: 1;
+    &:focus::-webkit-input-placeholder{
+    transition: text-indent 2s 0.5s ease; 
+    text-indent: -100%;
+    opacity: 1;
 }
 ` 

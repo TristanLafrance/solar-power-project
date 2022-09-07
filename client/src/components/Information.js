@@ -11,20 +11,24 @@ const Information = () => {
     const [agree, setAgree] = useState(false);
     const id = sessionStorage.getItem("id");
     const history = useNavigate();
+    let formE
+    console.log(formE)
+    const form = useRef(null);
 
-    // const sendEmail = (e) => {
-    //     e.preventDefault();
-        
-    //     emailjs.sendForm('service_5637uvo', 'template_tmee8yt', e.target , '3IBWffzWtgvzsxgCu')
-    //         .then((result) => {
-    //             console.log(result.text);
-    //             if(result.text === "OK"){
-    //                 history("/Result", {replace: true})
-    //             }
-    //         }, (error) => {
-    //             console.log(error.text);
-    //         });
-    // };
+    const sendEmail = (e) => {
+        e.preventDefault();
+        console.log(form.current)
+        console.log(e.target)
+        emailjs.sendForm('service_5637uvo', 'template_ssoi0md', e.target , '3IBWffzWtgvzsxgCu')
+            .then((result) => {
+                console.log(result.text);
+                if(result.text === "OK"){
+                    console.log("ok")
+                }
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
 
     const phoneVerification = async (e) => {
         console.log("Phone verification has been trigger")
@@ -33,8 +37,8 @@ const Information = () => {
         console.log(res2)
         if(res2 !== null){
             if(res2.valid === true){
+                sendEmail(e)
                 history("/Result", {replace: true})
-                // sendEmail(e)
             }else {
                 window.alert("We couldn't verify your phone number, please try again !")
             }
@@ -51,6 +55,7 @@ const Information = () => {
                     phoneVerification(e);
                 }, 2000);
             } else {
+                console.log(res2)
                 window.alert("We couldn't verify your email, please try again!")
             }
         }
@@ -58,7 +63,9 @@ const Information = () => {
 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
-
+        
+        formE = e
+        console.log(formE)
         const newFormData = {
             firstName: formData.firstName ,
             lastName: formData.lastName ,
@@ -103,15 +110,16 @@ const Information = () => {
             </div>
             <StyledContainer>
                 <Form>
-                    <StyledForm  onSubmit={(e) => handleSubmit(e, formData)}>
-                        <StyledLabel>Enter Your Details:</StyledLabel>
+                    <StyledForm ref={form} onSubmit={(e) => handleSubmit(e, formData)}>
+                        {/* <StyledLabel htmlFor="firstName">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="First Name"
-                                name={"firstName"}
+                                name="firstName"
                                 required={true}
                                 handleChange={handleChange} 
                             />
+                            {/* <StyledLabel htmlFor="lastName">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="Last Name"
@@ -119,13 +127,15 @@ const Information = () => {
                                 required={true}
                                 handleChange={handleChange} 
                             />
+                            {/* <StyledLabel htmlFor="email">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="email" 
                                 placeholder="Email"
-                                name={"email"}
+                                name="email"
                                 required={true}
                                 handleChange={handleChange} 
                             />
+                            {/* <StyledLabel htmlFor="phoneNumber">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="Phone Number"

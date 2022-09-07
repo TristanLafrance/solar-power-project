@@ -177,4 +177,5 @@ const PriceCalc = () => {
 
     const StyledLabel = styled.label`
         font-weight: bold;
+        margin-bottom: 20px;
     `
