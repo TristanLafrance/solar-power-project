@@ -76,7 +76,7 @@ const StyledBGContainer = styled.div`
 
 const StyledImgWork = styled.img`
     width: 75vw;
-    /* z-index: -1; */
+    z-index: -1;
 `
 
 const StyledInfo = styled.div`

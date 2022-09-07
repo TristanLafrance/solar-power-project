@@ -82,7 +82,7 @@ const App = () => {
 // Styled Components //
 
 const ParentDiv = styled.div`
-    
+    z-index: 2;
 `   
 
 const StyledHeader = styled.header`
