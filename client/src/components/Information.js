@@ -45,21 +45,21 @@ const Information = () => {
         }
     };
 
-    const emailVerification = async (e) => {
-        console.log("emailfunction has been trigerred")
-        const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
-        const res2 = await res.json();
-        if(res2 !== null){
-            if(res2.deliverability === "DELIVERABLE"){
-                setTimeout(() => {
-                    phoneVerification(e);
-                }, 2000);
-            } else {
-                console.log(res2)
-                window.alert("We couldn't verify your email, please try again!")
-            }
-        }
-    };
+    // const emailVerification = async (e) => {
+    //     console.log("emailfunction has been trigerred")
+    //     const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
+    //     const res2 = await res.json();
+    //     if(res2 !== null){
+    //         if(res2.deliverability === "DELIVERABLE"){
+    //             setTimeout(() => {
+    //                 phoneVerification(e);
+    //             }, 2000);
+    //         } else {
+    //             console.log(res2)
+    //             window.alert("We couldn't verify your email, please try again!")
+    //         }
+    //     }
+    // };
 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
@@ -84,7 +84,7 @@ const Information = () => {
         const response2 = await response.json();
         if(response2.data !== null){
             console.log("await emailVerification trigerred")
-            await emailVerification(e);
+            await phoneVerification(e);
         } else {
             // redirect to the form info
             history("/Information", {replace: true})
@@ -115,7 +115,7 @@ const Information = () => {
                             <Input className="input"
                                 type="text" 
                                 placeholder="First Name"
-                                name="firstName"
+                                name="first_name"
                                 required={true}
                                 handleChange={handleChange} 
                             />
@@ -123,7 +123,7 @@ const Information = () => {
                             <Input className="input"
                                 type="text" 
                                 placeholder="Last Name"
-                                name={"lastName"}
+                                name="last_name"
                                 required={true}
                                 handleChange={handleChange} 
                             />
