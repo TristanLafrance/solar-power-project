@@ -45,21 +45,21 @@ const Information = () => {
         }
     };
 
-    // const emailVerification = async (e) => {
-    //     console.log("emailfunction has been trigerred")
-    //     const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
-    //     const res2 = await res.json();
-    //     if(res2 !== null){
-    //         if(res2.deliverability === "DELIVERABLE"){
-    //             setTimeout(() => {
-    //                 phoneVerification(e);
-    //             }, 2000);
-    //         } else {
-    //             console.log(res2)
-    //             window.alert("We couldn't verify your email, please try again!")
-    //         }
-    //     }
-    // };
+    const emailVerification = async (e) => {
+        console.log("emailfunction has been trigerred")
+        const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
+        const res2 = await res.json();
+        if(res2 !== null){
+            if(res2.deliverability === "DELIVERABLE"){
+                setTimeout(() => {
+                    phoneVerification(e);
+                }, 2000);
+            } else {
+                console.log(res2)
+                window.alert("We couldn't verify your email, please try again!")
+            }
+        }
+    };
 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();

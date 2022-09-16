@@ -70,6 +70,7 @@ const ContactUs = () => {
 export default ContactUs;
 
 const StyledBGContainer = styled.div`
+    z-index: -20;
     display: flex;
     position: absolute;
 `
@@ -85,7 +86,7 @@ const StyledInfo = styled.div`
 `
 
 const StyledDesignImg = styled.img`
-    /* z-index: -1; */
+    z-index: -1;
     max-height: 100vh;
     position: absolute;
 `
@@ -93,6 +94,7 @@ const StyledDesignImg = styled.img`
 const StyledImgCEO = styled.img`
     max-width: 200px;
     margin: 20% 0px 0px 25%;
+    border-radius: 10%;
 `
 
 const Form = styled.div`
