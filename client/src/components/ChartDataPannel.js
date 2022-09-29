@@ -3,12 +3,12 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 
 const ChartDataPannel = ({ dataToPush }) => {
-
+    // String to number so it can be use in the graph data.
     const moneyPerYear = parseInt(dataToPush.data.moneyPerYear)
     
     const data = [];
     let result = moneyPerYear;
-
+    // for loop to render some variable in the graph
     for(let num = 0; num <= 10; num++){
         data.push({
             year: num,

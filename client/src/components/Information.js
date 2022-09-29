@@ -7,19 +7,23 @@ import emailjs from '@emailjs/browser';
 import bgDesign from "../assets/yue-chan-j8bxJBbLjIo-unsplash.jpg"
 
 const Information = () => {
+    // Declaring some useState //
     const [ formData, setFormData ] = useState({});
     const [agree, setAgree] = useState(false);
+
+    // Assinging id from sessionStorage
     const id = sessionStorage.getItem("id");
+
     const history = useNavigate();
-    let formE
-    console.log(formE)
+    
     const form = useRef(null);
 
+    // Function to send an email using email.JS (last function)
     const sendEmail = (e) => {
         e.preventDefault();
         console.log(form.current)
         console.log(e.target)
-        emailjs.sendForm('service_5637uvo', 'template_ssoi0md', e.target , '3IBWffzWtgvzsxgCu')
+        emailjs.sendForm(`${process.env.REACT_APP_Service_Key}`, `${process.env.REACT_APP_Template_Key}`, e.target , `${process.env.REACT_APP_Public_Key}`)
             .then((result) => {
                 console.log(result.text);
                 if(result.text === "OK"){
@@ -30,13 +34,15 @@ const Information = () => {
             });
     };
 
+    // Once trigered it will verify the phone number
     const phoneVerification = async (e) => {
         console.log("Phone verification has been trigger")
-        const res = await fetch(`https://phonevalidation.abstractapi.com/v1/?api_key=f77522d8a2f8491683d7453cfcd4ea4a&phone=${formData.phoneNumber}`)
+        const res = await fetch(`https://phonevalidation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_API_Key_Phone}&phone=${formData.phoneNumber}`)
         const res2 = await res.json();
         console.log(res2)
         if(res2 !== null){
             if(res2.valid === true){
+                // trigger the last function & redirect them to the result page 
                 sendEmail(e)
                 history("/Result", {replace: true})
             }else {
@@ -45,13 +51,15 @@ const Information = () => {
         }
     };
 
+    // Once trigered it will verify the email in the form
     const emailVerification = async (e) => {
         console.log("emailfunction has been trigerred")
-        const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=7fe0460151d649bdbef887e0b363fa3f&email=${formData.email}`)
+        const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_API_Key_Email}&email=${formData.email}`)
         const res2 = await res.json();
         if(res2 !== null){
             if(res2.deliverability === "DELIVERABLE"){
                 setTimeout(() => {
+                    // Triger third function
                     phoneVerification(e);
                 }, 2000);
             } else {
@@ -61,11 +69,11 @@ const Information = () => {
         }
     };
 
+    // Once trigered it will post the form into the data base 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
         
-        formE = e
-        console.log(formE)
+
         const newFormData = {
             firstName: formData.firstName ,
             lastName: formData.lastName ,
@@ -83,8 +91,8 @@ const Information = () => {
         })
         const response2 = await response.json();
         if(response2.data !== null){
-            console.log("await emailVerification trigerred")
-            await phoneVerification(e);
+            //Triger the second function
+            await emailVerification(e);
         } else {
             // redirect to the form info
             history("/Information", {replace: true})
@@ -96,7 +104,7 @@ const Information = () => {
         setAgree(!agree);
     }
 
-    
+    // Function to send the form to the useState
     const handleChange = (key, value) => {
         setFormData({
             ...formData,
@@ -111,7 +119,6 @@ const Information = () => {
             <StyledContainer>
                 <Form>
                     <StyledForm ref={form} onSubmit={(e) => handleSubmit(e, formData)}>
-                        {/* <StyledLabel htmlFor="firstName">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="First Name"
@@ -119,7 +126,6 @@ const Information = () => {
                                 required={true}
                                 handleChange={handleChange} 
                             />
-                            {/* <StyledLabel htmlFor="lastName">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="Last Name"
@@ -127,7 +133,6 @@ const Information = () => {
                                 required={true}
                                 handleChange={handleChange} 
                             />
-                            {/* <StyledLabel htmlFor="email">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="email" 
                                 placeholder="Email"
@@ -135,7 +140,6 @@ const Information = () => {
                                 required={true}
                                 handleChange={handleChange} 
                             />
-                            {/* <StyledLabel htmlFor="phoneNumber">Enter Your Details:</StyledLabel> */}
                             <Input className="input"
                                 type="text" 
                                 placeholder="Phone Number"

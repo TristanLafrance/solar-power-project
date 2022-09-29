@@ -3,10 +3,10 @@ const morgan = require('morgan');
 
 const PORT = 4000;
 
-// importing routes from index.js
+// importing routes from index
 const indexRoutes = require("./routes/index");
 
-// app will = express()
+
 const app = express();
 
 app.use(function(req, res, next) {

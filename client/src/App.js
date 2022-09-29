@@ -12,14 +12,13 @@ import ContactUs from "./components/ContactUs";
 
 const App = () => {
     const [ usersInfo, setUsersInfo ] = useState(null);
-
+    // Getting relevant information on the users location, such as lat & long
     useEffect(() => {
-        fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=d65bda1b27e444d4b36764fafbc5587b`)
+        fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_API_KeyIp}`)
         .then(res => res.json())
         .then(data => setUsersInfo(data))
     }, [])
-    console.log(usersInfo) 
-    
+        // Once the IP API return a value, the value is stored in the data base
         useEffect(() => {
             if(usersInfo !== null){
                 fetch("/api/post-user", {
@@ -31,6 +30,7 @@ const App = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        // assigning an random id to the users with sessionStorage
                         if(data.message === "success" ){
                             window.sessionStorage.setItem("id", data.data)
                             console.log("sucess")

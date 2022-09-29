@@ -8,6 +8,7 @@ const Result = () => {
     const id = sessionStorage.getItem("id")
     const collection = sessionStorage.getItem("collection")
     
+    // Depending on the sessionStorage collection's value it will get the result from the data base
     useEffect(() => {
         if(collection === "payback"){
             fetch(`/api/get-result-payback/${id}`)
@@ -72,6 +73,8 @@ const Result = () => {
 };
 
 export default Result;
+
+// Styled-components
 
 const StyledParent = styled.div`
     margin-top:  60px;

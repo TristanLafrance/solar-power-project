@@ -9,10 +9,11 @@ import desingBG from "../assets/ricardo-gomez-angel-5YM26lUicfU-unsplash.jpg"
 const ContactUs = () => {
     const form = useRef();
 
+    // Function to send an email using email.JS
     const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_5637uvo', 'template_ssoi0md', form.current, '3IBWffzWtgvzsxgCu')
+    emailjs.sendForm(`${process.env.REACT_APP_Service_Key}`, `${process.env.REACT_APP_Template_Key}`, form.current, `${process.env.REACT_APP_Public_Key}`)
         .then((result) => {
             window.alert("Email sent successfuly!")
         }, (error) => {

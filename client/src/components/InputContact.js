@@ -14,6 +14,8 @@ const InputContact = ({name, type, placeholder, required}) => {
 
 export default InputContact;    
 
+// Styled components // 
+
 const StyledInputInformation = styled.input`
     padding: 10px;
     width: 200px;

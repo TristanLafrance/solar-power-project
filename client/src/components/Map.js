@@ -18,6 +18,9 @@ const Map = () => {
     
 };
 
+export default Map;
+
+// Styled-components // 
 
 const StyledContainer = styled.div`
     margin-top: 60px;
@@ -49,4 +52,3 @@ const StyledRef = styled.div`
 const StyledLink = styled.a`
     margin-left: 5px;
 `
-export default Map;

@@ -12,6 +12,8 @@ const InputCalc = ({type, placeholder, name, required, handleChange}) => {
     )
 }
 
+// Styled Component // 
+
 const StyledInput = styled.input`
     padding: 10px;
     width: 400px;

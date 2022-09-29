@@ -11,14 +11,16 @@ const history = useNavigate();
 const [formData, setFormData] = useState({});
 const id = sessionStorage.getItem("id");
 
+// Once trigered it will post the form to the data base 
 const thirdFetch =  (data) => {
-    console.log(data)
+
     const allData = {
         kWPerSquareMeter: data.annual,
         perKiloWattsHour: formData.perKiloWattsHour,
         numbSolarPanel: formData.numbSolarPanel,
         eachPannelPower: formData.eachPannelPower
     }
+    
     fetch(`/api/post-calc-info/${id}`, {
         method: 'POST',
         headers: {
@@ -29,52 +31,60 @@ const thirdFetch =  (data) => {
     .then(res => res.json())
     .then(data => {
         if(data.message === "success"){
-            // if auth0 already logged in then just send him to result page 
+            // Replace to the information page & assign collection to "payback" with sessionStorage
             window.sessionStorage.setItem("collection", "yourPannel");
             history("/Information", {replace: true})
         } else {
+            //if error -->
             window.alert("Something went wrong ! Please try again")
         }
     })
 };
-// ${usersCo.latitude} ${usersCo.longitude}
+// ${usersCo.latitude} ${usersCo.longitude} <-- would use if the API would be global, but only work for the USA. 
+// Once trigerred it will call the nrel API to get back the annual average GHI
 const secondFetch = async (data) => {
-    const res = await fetch(`https://developer.nrel.gov/api/solar/solar_resource/v1.json?limit=1&api_key=Sc8BzcXg593IVrpTDp5gGRL2gxBmj7ICW4Fbprya&lat=40&lon=-105`)
+
+    const res = await fetch(`https://developer.nrel.gov/api/solar/solar_resource/v1.json?limit=1&api_key=${process.env.REACT_APP_API_Key_GHI}&lat=40&lon=-105`)
     const res2 = await res.json()
-    console.log(res2)
     const res3 = await res2.outputs
-    console.log(res3)
+
         if(res3 !== null){
+            // Trigger third function
             thirdFetch(res3.avg_ghi);
-            
+        } else {
+            //if error -->
+            window.alert("Something went wrong ! Please try again")
         }
     
     
 };
-// 3e fetch 
-// 2e fetch call 3e
 
 
-// handleSubmit send the information on submit
+// Function that send the form to the data base
 const handleSubmit = async (e) => {
     e.preventDefault();
     // send the choosen info for the calculation
     
     const response = await fetch(`/api/get-co/${id}`)
     const response2 = await response.json();
-    console.log(response2)
-    if(response2.data !== null){
-        await secondFetch(response2);
-    }
-}
 
-// handleChange to pass up the information
+    if(response2.data !== null){
+        // Trigger second function
+        await secondFetch(response2);
+    } else {
+        //if error -->
+        window.alert("Something went wrong ! Please try again")
+    }
+};
+
+//  Function to send the form information to the useState "formData"
 const handleChange = (key, value) => {
     setFormData({
         ...formData,
         [key]: value
     })
-}
+};
+
 return (
     <div>
         <div>

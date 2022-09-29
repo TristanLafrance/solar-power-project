@@ -2,7 +2,7 @@
 
 const router = require("express").Router();
 
-// importing handlers from controllers.js
+// importing handlers from handlers
 const {
     newUser,
     getUser,

@@ -7,11 +7,13 @@ import {useNavigate} from 'react-router-dom';
 const HomePage = () => {
     const history = useNavigate();
 
+    //Redirect to another page --> Solar-pannel-calculation
     const handleClickOne = () => {
         history("/Solar-pannel-calculation", {replace: true})
 
     };
 
+    //Redirect to another page --> Price-calculation
     const handleClickTwo = () => {
         history("/Price-calculation", {replace: true})
     };

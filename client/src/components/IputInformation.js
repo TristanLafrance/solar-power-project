@@ -16,6 +16,8 @@ const InputInformation = ({type, placeholder, name, required}) => {
 
     export default InputInformation;    
 
+// Styled-components // 
+
 const StyledInputInformation = styled.input`
     padding: 10px;
     width: 400px;

@@ -3,14 +3,14 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 
 const ChartDataPayback = ({ dataToPush }) => {
-    console.log(dataToPush)
-    console.log(dataToPush.data)
+    // Declaring/Renaming variable from the data base
     const yearToPayback = dataToPush.data.timePaybackYear
     const moneyPerYear = dataToPush.data.moneyPerYear
     const cost = dataToPush.data.cost
     const data = [];
     let result = cost;
 
+    // for loop to render the result with the variable.
     for(let num = 0; num <= yearToPayback; num++){
         data.push({
             year: num,

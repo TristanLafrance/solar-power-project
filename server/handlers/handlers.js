@@ -136,8 +136,7 @@ const calcInfo = async (req, res) => {
 
         const usersId = req.params.id
         console.log(usersId)
-        // README for the calculation and variable
-        // TODO
+        
 
         const paid = req.body.perKiloWattsHour
         const power = req.body.eachPannelPower
@@ -193,8 +192,7 @@ const payback = async (req, res) => {
 
         const usersId = req.params.id
         console.log(usersId)
-        // README for the calculation and variable
-        // TODO
+        
         
         const paidPerKwH = req.body.perKiloWattsHour
         const power = req.body.eachPannelPower
