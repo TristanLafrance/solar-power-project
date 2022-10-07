@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/solar-power-project/static/js/main.c347b3ec.js",
+    "static/media/nathan-dumlao-mZZ0ls7X9tc-unsplash.jpg": "/solar-power-project/static/media/nathan-dumlao-mZZ0ls7X9tc-unsplash.f7b0dd4136ef5d537e96.jpg",
+    "static/media/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.jpg": "/solar-power-project/static/media/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.74cc9a6de80f93b945c4.jpg",
+    "static/media/sungrow-emea-itv-MC5S6cU-unsplash.jpg": "/solar-power-project/static/media/sungrow-emea-itv-MC5S6cU-unsplash.036e9209bea2d49981b5.jpg",
+    "static/media/ricardo-gomez-angel-5YM26lUicfU-unsplash.jpg": "/solar-power-project/static/media/ricardo-gomez-angel-5YM26lUicfU-unsplash.b2028cbd07aff9d94f0c.jpg",
+    "static/media/World_PVOUT_mid-size-map_160x95mm-300dpi_v20191015.jpg": "/solar-power-project/static/media/World_PVOUT_mid-size-map_160x95mm-300dpi_v20191015.e7db31145c3f1e4ac140.jpg",
+    "static/media/yue-chan-j8bxJBbLjIo-unsplash.jpg": "/solar-power-project/static/media/yue-chan-j8bxJBbLjIo-unsplash.61b69e68946d523b9691.jpg",
+    "static/media/vivint-solar-HASgVRE48KY-unsplash.jpg": "/solar-power-project/static/media/vivint-solar-HASgVRE48KY-unsplash.894d4c68b59c2f946b02.jpg",
+    "static/media/micheile-dot-com-ZVprbBmT8QA-unsplash.jpg": "/solar-power-project/static/media/micheile-dot-com-ZVprbBmT8QA-unsplash.60aa7d8b6516ee1a5337.jpg",
+    "static/media/jason-goodman-Oalh2MojUuk-unsplash.jpg": "/solar-power-project/static/media/jason-goodman-Oalh2MojUuk-unsplash.5c3e296eafb41b6748ab.jpg",
+    "static/media/towfiqu-barbhuiya-jpqyfK7GB4w-unsplash.jpg": "/solar-power-project/static/media/towfiqu-barbhuiya-jpqyfK7GB4w-unsplash.c2bbd340a666b0e0683b.jpg",
+    "static/media/manny-becerra-NgdhrwAx0J8-unsplash-compressed.jpg": "/solar-power-project/static/media/manny-becerra-NgdhrwAx0J8-unsplash-compressed.387b59674a50c8302525.jpg",
+    "index.html": "/solar-power-project/index.html",
+    "main.c347b3ec.js.map": "/solar-power-project/static/js/main.c347b3ec.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c347b3ec.js"
+  ]
+}
