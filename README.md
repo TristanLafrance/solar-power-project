@@ -1,6 +1,6 @@
 This is my final project from my bootcamp !
 
-The delay for this project was 2 weeks. 95% of the work was done it this time frame to meet the MVP, the rest was some CSS edit & adding comments.
+The delay for this project was 2 weeks. 95% of the work was done in this time frame to meet the MVP, the rest was some CSS edit & adding comments.
 
 The goal of this project was to create from scratch, a working front-end & back-end website, using:
 
