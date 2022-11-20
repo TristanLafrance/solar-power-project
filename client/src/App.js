@@ -1,4 +1,4 @@
-import{ BrowserRouter, Routes, Route, NavLink}from "react-router-dom";
+import{ BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
 import HomePage from "./components/HomePage"; 
 import Information from "./components/Information";
 import Map from "./components/Map"
