@@ -199,6 +199,7 @@ const payback = async (req, res) => {
         const solarPannel = req.body.numbSolarPanel
         const sunHour = req.body.kWPerSquareMeter
         const cost = parseInt(req.body.cost)
+        
         // Solar pannel system output in KwH/day
         const systemOutputPerDay = (sunHour * (solarPannel * (power / 1000)) * 0.75).toFixed(2)
 
