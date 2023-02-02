@@ -17,14 +17,16 @@ const HomePage = () => {
     return (
             <StyledParent>
                 <StyledImgSolarPannel src={solarPannel} alt="Some solar pannels" />
-                <StyledSquare>
-                        <div>
+                    <StyledContainer>
+                        <QuestionOne>
                             When does it get worth it ?
-                        </div>
-                        <div>
+                            <ButtonOne> Click Here </ButtonOne>
+                        </QuestionOne>
+                        <QuestionTwo>
                             How much money will I make ?
-                        </div>
-                </StyledSquare>
+                            <ButtonTwo> Click Here </ButtonTwo>
+                        </QuestionTwo>
+                </StyledContainer>
             </StyledParent>
     )
 };
@@ -41,5 +43,55 @@ const StyledImgSolarPannel = styled.img`
     z-index: -100;
 `
 
-const StyledSquare = styled.div`
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+`
+
+const QuestionOne = styled.p`
+    color: white;
+    height: 450px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: rgb(0,0,0,0.5);
+    box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
+`
+const QuestionTwo = styled.p`
+    color: white;
+    height: 450px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: rgb(0,0,0,0.5);
+    box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.61);
+    -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
+`
+const ButtonOne = styled.button`
+    background-color: rgba(7, 63, 250, 0.767);
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding: 10px 30px 10px 30px;
+    
+    &:hover {
+        cursor: pointer;
+        background-color:rgba(7, 63, 250, 0.967);
+    }
+`
+
+const ButtonTwo = styled.button`
+    background-color: rgba(7, 63, 250, 0.767);
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding: 10px 30px 10px 30px;
+    
+    &:hover {
+        cursor: pointer;
+        background-color:rgba(7, 63, 250, 0.967);
+    }
 `
