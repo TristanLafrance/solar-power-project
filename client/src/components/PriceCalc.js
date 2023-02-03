@@ -41,6 +41,7 @@ const PriceCalc = () => {
         })
     };
     // ${usersCo.latitude} ${usersCo.longitude} <-- would use if the API would be global, but only work for the USA. 
+    // ----                                       ---                                                         ---- // 
     // Once trigerred it will call the nrel API to get back the annual average GHI 
     const secondFetch = async (data) => {
         const res = await fetch(`https://developer.nrel.gov/api/solar/solar_resource/v1.json?limit=1&api_key=${process.env.REACT_APP_API_Key_GHI}&lat=40&lon=-105`)
@@ -84,7 +85,9 @@ const PriceCalc = () => {
     return (
         <div>
             <StyledContainer>
+                {/* Images */}
                 <StyledImgPennies src={savingsPots} alt="Pots of penny" />
+                {/* Form */}
                 <Form>
                     <StyledForm onSubmit={(e) => handleSubmit(e, formData)}>
                     <StyledLabel>Enter Your Details:</StyledLabel>
@@ -116,10 +119,12 @@ const PriceCalc = () => {
                         required={true}
                         handleChange={handleChange} 
                     />
+                    {/* onClick trigger the handleSubmit function */}
                     <Submit type="submit">Confirm</Submit>
                 </StyledForm>
                 </Form>
             </StyledContainer>
+            {/* Image */}
             <div>
                 <StyledImgSavings src={playingMoney} alt="some pennies on the table" />
             </div>

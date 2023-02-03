@@ -5,26 +5,55 @@ import {useNavigate} from 'react-router-dom';
 const HomePage = () => {
     const history = useNavigate();
 
-    //Redirect to another page --> Solar-pannel-calculation
+    //Redirect to another page --> Price-calculation
     const handleClickOne = () => {
-        history("/Solar-pannel-calculation", {replace: true})
+        history("/Price-calculation", {replace: true})
     };
 
-    //Redirect to another page --> Price-calculation
+    //Redirect to another page --> Solar-pannel-calculation
     const handleClickTwo = () => {
-        history("/Price-calculation", {replace: true})
+        history("/Solar-pannel-calculation", {replace: true})
     };
     return (
             <StyledParent>
                 <StyledImgSolarPannel src={solarPannel} alt="Some solar pannels" />
                     <StyledContainer>
+                        {/* First Container */}
                         <QuestionOne>
-                            When does it get worth it ?
-                            <ButtonOne> Click Here </ButtonOne>
+                            <QuestionOneHeader>
+                                When does it get worth it ?
+                            </QuestionOneHeader>
+                            <div> You will know: </div>
+                            <StyledULQuestionOne>
+                                <StyledLiQuestion>
+                                    How much time it will take to refund it
+                                </StyledLiQuestion>
+                                <StyledLiQuestion>
+                                    How much money you will make 
+                                </StyledLiQuestion>
+                                <StyledLiQuestion>
+                                    How much power you will produce
+                                </StyledLiQuestion>
+                            </StyledULQuestionOne>
+                            {/* First button, onClick redirect to /Solar-pannel-calculation */}
+                            <ButtonOne onClick={handleClickOne}> Click Here </ButtonOne>
                         </QuestionOne>
+                        {/* Second Container */}
                         <QuestionTwo>
-                            How much money will I make ?
-                            <ButtonTwo> Click Here </ButtonTwo>
+                            <QuestionTwoHeader>
+                                How much money will I make ?
+                            </QuestionTwoHeader>
+                            <div> You will know: </div>
+                            <StyledULQuestionTwo>
+                                <StyledLiQuestion>
+                                    How much money you will make 
+                                </StyledLiQuestion>
+                                <StyledLiQuestion>
+                                    How much power you will produce
+                                </StyledLiQuestion>
+                            </StyledULQuestionTwo>
+                            {/* Second button, onClick redirect to /Price-calculation */}
+                            <ButtonTwo onClick={handleClickTwo}> Click Here </ButtonTwo>
                         </QuestionTwo>
                 </StyledContainer>
             </StyledParent>
@@ -32,6 +61,8 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+/* Styled components */
 
 const StyledParent = styled.div`
 `
@@ -50,8 +81,7 @@ const StyledContainer = styled.div`
     height: 100vh;
 `
 
-const QuestionOne = styled.p`
-    font-weight: bold;
+const QuestionOne = styled.div`
     color: white;
     height: 450px;
     width: 400px;
@@ -61,8 +91,22 @@ const QuestionOne = styled.p`
     -webkit-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
     -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
 `
-const QuestionTwo = styled.p`
+
+const QuestionOneHeader = styled.h2`
     font-weight: bold;
+    margin: 20px 0px 10px 50px;
+`
+
+const StyledULQuestionOne = styled.ul`
+`
+
+const StyledLiQuestion = styled.li`
+    margin: 10px 0px 10px 75px ;
+    list-style: none;
+    font-size: 17px;
+`
+
+const QuestionTwo = styled.div`
     color: white;
     height: 450px;
     width: 400px;
@@ -72,6 +116,16 @@ const QuestionTwo = styled.p`
     -webkit-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.61);
     -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
 `
+
+const QuestionTwoHeader = styled.h2`
+    font-weight: bold;
+    margin: 20px 0px 10px 40px;
+`
+
+const StyledULQuestionTwo = styled.ul`
+
+`
+
 const ButtonOne = styled.button`
     color: white;
     font-size: 15px;

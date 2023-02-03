@@ -12,7 +12,7 @@ const options = {
     useUnifiedTopology: true,
 };
 
-
+/* - Post - a new user, sending information from the IP API - Contry, Lat, Long, etc... */
 const newUser = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -51,7 +51,7 @@ const newUser = async (req, res) => {
     }
 };
 
-// .find doesn't work
+/* - Get - the information from newUser */
 const getCo = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -85,6 +85,7 @@ const getCo = async (req, res) => {
     }
 };
 
+/* - Post -  information from the /Information form's */
 const newInfo = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -124,7 +125,8 @@ const newInfo = async (req, res) => {
         })
     }
 };
-// TODO
+
+/* - Post - information from the  */
 const calcInfo = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 

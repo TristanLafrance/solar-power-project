@@ -27,6 +27,7 @@ const Result = () => {
 
 
     if(collection === "payback" && resultData !== null){
+        /* If users took the first option - When does it get worth it? - this JSX will render  */
         return (
             <StyledParent>
                 <StyledHeader>Here is your result:</StyledHeader>
@@ -47,6 +48,7 @@ const Result = () => {
             </StyledParent>
         )
     } else if(collection === "yourPannel" && resultData !== null){
+        /* If users took the second option - How much will I make ? - this JSX will render  */
         return (
             <StyledParent>
                 <StyledHeader>Here is your result:</StyledHeader>
@@ -64,6 +66,7 @@ const Result = () => {
             </StyledParent>
         )
     } else {
+        /* While loading... */
         return (
             <div>
                 Loading ... 

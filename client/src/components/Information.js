@@ -113,10 +113,12 @@ const Information = () => {
     }
     return (
         <div>
+            {/* Background images */}
             <div>
                 <StyledImgBg src={bgDesign} alt="Solar panel on a house" />
             </div>
             <StyledContainer>
+                {/* Form */}
                 <Form>
                     <StyledForm ref={form} onSubmit={(e) => handleSubmit(e, formData)}>
                             <Input className="input"
@@ -147,12 +149,14 @@ const Information = () => {
                                 required={true}
                                 handleChange={handleChange} 
                             />
+                            {/* Checkbox with the Terms of service */}
                     <StyledCheckBox>
                         <CheckBoxInput className="input" type="checkbox"  onChange={checkboxHandler} />
                         <div>
                             I agree to the <Link to={"/Terms-of-Service"}> terms of services </Link>
                         </div>
                     </StyledCheckBox>
+                    {/* onClick triggers the first functions called handleSubmit */}
                     <Submit value="Send" disabled={!agree} type="submit">Confirm</Submit>
                     </StyledForm>
                 </Form>
@@ -164,6 +168,8 @@ const Information = () => {
 
 
 export default Information;
+
+/* Styled-components */
 
 const StyledImgBg = styled.img`
     width: 100vw;

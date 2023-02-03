@@ -9,7 +9,7 @@ import desingBG from "../assets/ricardo-gomez-angel-5YM26lUicfU-unsplash.jpg"
 const ContactUs = () => {
     const form = useRef();
 
-    // Function to send an email using email.JS
+    // Function to send an email using email.JS //
     const sendEmail = (e) => {
     e.preventDefault();
 
@@ -23,6 +23,7 @@ const ContactUs = () => {
 
     return (
         <div>
+            {/* Background images */}
             <StyledBGContainer>
                 <StyledImgWork src={working} alt="a meeting" />
                 <StyledInfo>
@@ -33,6 +34,7 @@ const ContactUs = () => {
                 </StyledInfo>
             </StyledBGContainer>
             <div>
+                {/* Form  */}
                 <Form>
                     <StyledForm ref={form} onSubmit={(e) => sendEmail(e)}>
                         <StyledLabel>Enter Your Details:</StyledLabel>
@@ -60,6 +62,7 @@ const ContactUs = () => {
                                 name={"message"}
                                 required={true}
                                 />
+                    {/* Onclick trigger the functions sendEmail */}
                     <Submit value="Send" type="submit">Confirm</Submit>
                     </StyledForm>
                 </Form>
@@ -69,6 +72,8 @@ const ContactUs = () => {
 
 
 export default ContactUs;
+
+/* Styled components */
 
 const StyledBGContainer = styled.div`
     z-index: -20;

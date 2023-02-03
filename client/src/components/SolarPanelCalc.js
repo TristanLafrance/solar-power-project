@@ -87,10 +87,12 @@ const handleChange = (key, value) => {
 
 return (
     <div>
+        {/* Background image */}
         <div>
             <div>
                 <StyledImgDesign src={designBG} alt="Some design background"/>
             </div>
+            {/* Form */}
         <Form>
             <StyledForm onSubmit={(e) => handleSubmit(e, formData)}>
             <StyledLabel>Enter Your Details:</StyledLabel>
@@ -115,6 +117,7 @@ return (
                 required={true}
                 handleChange={handleChange} 
             />
+            {/* onClick, it will trigger the function handleSubmit */}
             <Submit type="submit">Confirm</Submit>
         </StyledForm>
         </Form>
@@ -127,6 +130,7 @@ return (
 
 export default SolarPanelCalc;
 
+/* Styled-components */
 
 const StyledImgDesign = styled.img`
     width: 100vw;

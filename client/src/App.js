@@ -46,6 +46,7 @@ const App = () => {
         <BrowserRouter>
             <GlobalStyles />
                 <ParentDiv>
+                    {/* Nav bar */}
                 <div className="container">
                     <StyledHeader>
                         <StyledH1>
@@ -65,6 +66,7 @@ const App = () => {
                         </StyledNavDesk>
                     </StyledHeader>
                 </div>
+                {/* path/routes */}
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/Map" element={<Map />} />

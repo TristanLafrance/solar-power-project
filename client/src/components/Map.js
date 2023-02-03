@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Map = () => {
     return (
+        /* Rendering the map page */
         <StyledContainer>
             <StyledDesc>
                 Here is a map showing the potential kWh/kWp output in the world.
