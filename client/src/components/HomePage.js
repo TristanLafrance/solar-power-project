@@ -51,6 +51,7 @@ const StyledContainer = styled.div`
 `
 
 const QuestionOne = styled.p`
+    font-weight: bold;
     color: white;
     height: 450px;
     width: 400px;
@@ -61,6 +62,7 @@ const QuestionOne = styled.p`
     -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
 `
 const QuestionTwo = styled.p`
+    font-weight: bold;
     color: white;
     height: 450px;
     width: 400px;
@@ -71,7 +73,10 @@ const QuestionTwo = styled.p`
     -moz-box-shadow: 3px 9px 20px 1px rgba(0,0,0,0.5);
 `
 const ButtonOne = styled.button`
-    background-color: rgba(7, 63, 250, 0.767);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgb(57, 196, 255);
     border: none;
     margin-top: 40px;
     border-radius: 5px;
@@ -79,12 +84,15 @@ const ButtonOne = styled.button`
     
     &:hover {
         cursor: pointer;
-        background-color:rgba(7, 63, 250, 0.967);
+        background-color:rgba(57, 196, 255, 0.8);
     }
 `
 
 const ButtonTwo = styled.button`
-    background-color: rgba(7, 63, 250, 0.767);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgb(57, 196, 255);
     border: none;
     margin-top: 40px;
     border-radius: 5px;
@@ -92,6 +100,6 @@ const ButtonTwo = styled.button`
     
     &:hover {
         cursor: pointer;
-        background-color:rgba(7, 63, 250, 0.967);
+        background-color:rgba(57, 196, 255, 0.8);
     }
 `
