@@ -126,7 +126,7 @@ const newInfo = async (req, res) => {
     }
 };
 
-/* - Post - information from the  */
+/* - Post - information from the "How much money will I make ?" */
 const calcInfo = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -183,6 +183,7 @@ const calcInfo = async (req, res) => {
     }
 };
 
+/* - Post - information from the "When does it get worth it ?" */
 const payback = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -250,7 +251,7 @@ const payback = async (req, res) => {
     }
 };
 
-
+/*  - Get - all information that the user want to see from the "When does it get worth it ?" - Final result - */
 const getResultPayback = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -282,7 +283,7 @@ const getResultPayback = async (req, res) => {
     }
 };
 
-
+/* - Get - all information that the user want to see from the "How much money will I make ?" - Final result - */
 const getYourPannel = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -314,6 +315,7 @@ const getYourPannel = async (req, res) => {
     }
 };
 
+/* - Get - information gathered from a user  */
 const getUser = async (req, res) => {
     
     const client = new MongoClient(MONGO_URI, options);
