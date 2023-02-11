@@ -23,7 +23,7 @@ const HomePage = () => {
                             <QuestionOneHeader>
                                 When does it get worth it ?
                             </QuestionOneHeader>
-                            <div> You will know: </div>
+                            <SubQuestionOne> You will know: </SubQuestionOne>
                             <StyledULQuestionOne>
                                 <StyledLiQuestion>
                                     How much time it will take to refund it
@@ -43,7 +43,7 @@ const HomePage = () => {
                             <QuestionTwoHeader>
                                 How much money will I make ?
                             </QuestionTwoHeader>
-                            <div> You will know: </div>
+                            <SubQuestionTwo> You will know: </SubQuestionTwo>
                             <StyledULQuestionTwo>
                                 <StyledLiQuestion>
                                     How much money you will make 
@@ -97,7 +97,12 @@ const QuestionOneHeader = styled.h2`
     margin: 20px 0px 10px 50px;
 `
 
+const SubQuestionOne = styled.div`
+    margin: 20px 0px 0px 20px;
+`
+
 const StyledULQuestionOne = styled.ul`
+    margin-top: 20px;
 `
 
 const StyledLiQuestion = styled.li`
@@ -122,8 +127,12 @@ const QuestionTwoHeader = styled.h2`
     margin: 20px 0px 10px 40px;
 `
 
-const StyledULQuestionTwo = styled.ul`
+const SubQuestionTwo = styled.div`
+    margin: 20px 0px 0px 20px;
+`
 
+const StyledULQuestionTwo = styled.ul`
+    margin-top: 20px;
 `
 
 const ButtonOne = styled.button`
@@ -135,7 +144,8 @@ const ButtonOne = styled.button`
     margin-top: 40px;
     border-radius: 5px;
     padding: 10px 30px 10px 30px;
-    
+    margin: 100px 0px 0px 125px;
+
     &:hover {
         cursor: pointer;
         background-color:rgba(57, 196, 255, 0.8);
@@ -151,7 +161,8 @@ const ButtonTwo = styled.button`
     margin-top: 40px;
     border-radius: 5px;
     padding: 10px 30px 10px 30px;
-    
+    margin: 135px 0px 0px 125px;
+
     &:hover {
         cursor: pointer;
         background-color:rgba(57, 196, 255, 0.8);
